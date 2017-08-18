@@ -84,7 +84,7 @@ In this example, we suppose that you have used the following server definition i
 
 ### finally, configure the host key in your `settings.xml`
 
-Now, in you configuration file `.m2/settings.xml`, just add a `<hostKey>...</hostKey>` parameter if you want to avoid using the standard $HOME/.ssh/known_hosts file.
+Now, in you configuration file `.m2/settings.xml`, just add a `<hostKey>...</hostKey>` parameter when you want to avoid using the standard `$HOME/.ssh/known_hosts` file.
 
     <servers>
       <server>
