@@ -2,7 +2,7 @@
 
 Mirror of Apache Maven wagon, with extensions for in-line host key configuration in settings.xml
 
-Many people want to use the `SingleKnownHostsProvider` wagon provider to manually provide a host key when deploying with Maven to a remote SCP server specified in their `settings.xml`. This is to avoid relying on `$HOME/.ssh/known_hosts` and thus be user-context independant.
+Many people want to use the `SingleKnownHostsProvider` wagon provider to manually provide a host key when deploying with Maven to a remote SCP server specified in their `settings.xml`. This is to avoid relying on `$HOME/.ssh/known_hosts` and thus be independant from the user context.
 They often try to overload the `knownHostsProvider` implementation class the following way, to get a SingleKnownHostProvider instead of the default FileKnownHostProvider:
 
     <server>
