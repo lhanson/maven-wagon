@@ -18,7 +18,7 @@ So, they often try to overload the `knownHostsProvider` implementation class the
 
 **This does not work**.
 
-Because when the repository URL starts with `scp:`, Plexus, the component manager used by Maven, searches a component with role `org.apache.maven.wagon.Wagon` and hint `scp`, which, in the current Wagon implementation (up to 3.0.1), is of class `org.apache.maven.wagon.providers.ssh.jsch`. This class extends the class `AbstractJschWagon` in the same package, and this later class statically defines a `file` hint to get a `knownHostProvider`. Here is an excerpt from the sources:
+Because when the repository URL starts with `scp:`, Plexus, the component manager used by Maven, searches a component with role `org.apache.maven.wagon.Wagon` and hint `scp`, which, in the current Wagon implementation (up to 3.0.1 at least), is of class `org.apache.maven.wagon.providers.ssh.jsch`. This class extends the class `AbstractJschWagon` in the same package, and this later class statically defines a `file` hint to get a `knownHostProvider`. Here is an excerpt from the sources:
 
     /**
      * @plexus.requirement role-hint="file"
