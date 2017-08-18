@@ -53,7 +53,9 @@ To use this package, just do the following:
     % cd maven-wagon
     % mvn install -DskipTests
 
-If you want to run unit testing, just remote `-DskipTests`. This may take a while.
+Note 1: this will not override your Wagon installation, since this patched distribution is specifically renamed 3.0.1-SINGLE.
+
+Note 2: if you want to run unit testing, just remote `-DskipTests`. This may take a while.
 
 In your `pom.xml`, use the following extension:
 
@@ -67,5 +69,24 @@ In your `pom.xml`, use the following extension:
       </extensions>
     </build>
 
+In this example, we suppose that you have used the following server definition in your `pom.xml`:
 
+    <distributionManagement>
+      <repository>
+        <id>myServer</id>
+        <url>scp://my.remote.server.com/tmp/repo</url>
+      </repository>
+    </distributionManagement>
 
+Now, in
+
+  <servers>
+    <server>
+      <id>myServer</id>
+        <username>fenyo</username>
+        <privateKey>d:/cygwin64/home/fenyo/.ssh/id_dsa</privateKey>
+        <configuration>
+          <hostKey>my.remote.server.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2sVyRPm1OnoudM0Ekm9rp5H/Bwgd9TOaYzmcGcqimm137U0bnvwFA0EnyyjMdzGvgUBIrSTssZRM97p1/0O63gD4cpKvXf6ZYzoHSeX4Zmg2MptD9scqzMF4HewSSMvZIvgNn8h9QmL8dIy2ynudVuE03P+bPCb7Y1eEG5V3JqL++j+HAvbsAwRVaAf1U3EQxgzMpnwwFF2bdUuuqvGJPqfs6S1Vg4ATdGUr8lrmUFemo/lT0+nB5OBYQFyfJRd6fAv8vYkvrANjNBlg7L8m3MUwgl3Jt4xzPjbIlEwI4L9sKQ7P3nVUw55f9zjX8eIjgJSosr1uswJN1LiJjD11F</hostKey>
+        </configuration>
+      </server>
+    </servers>
