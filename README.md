@@ -2,7 +2,7 @@
 
 Patched version of Apache Maven wagon, supporting in-line host key configuration in `settings.xml`
 
-By Alexandre Fenyo - https://fenyo.net - 2017
+By Alexandre Fenyo - https://fenyo.net
 
 ## For the impatient
 
