@@ -2,6 +2,29 @@
 
 Mirror of Apache Maven wagon, with extensions for in-line host key configuration in settings.xml
 
+## For the impatient
+
+1- use this **`3.0.1-SINGLE`** specific version of Wagon, instead of the standard one:
+
+        <extension>
+          <groupId>org.apache.maven.wagon</groupId>
+          <artifactId>wagon-ssh</artifactId>
+          <version>3.0.1-SINGLE</version>
+        </extension>
+
+2- use the new `hostKey` parameter in your `.m2/settings.xml`:
+
+    <servers>
+      <server>
+        <id>[...]</id>
+          <username>[...]</username>
+          <privateKey>[...]</privateKey>
+          <configuration>
+            <hostKey>my.remote.server.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2sVyRPm1OnoudM0Ekm9rp5H/Bwgd9TOaYzmcGcqimm137U0bnvwFA0EnyyjMdzGvgUBIrSTssZRM97p1/0O63gD4cpKvXf6ZYzoHSeX4Zmg2MptD9scqzMF4HewSSMvZIvgNn8h9QmL8dIy2ynudVuE03P+bPCb7Y1eEG5V3JqL++j+HAvbsAwRVaAf1U3EQxgzMpnwwFF2bdUuuqvGJPqfs6S1Vg4ATdGUr8lrmUFemo/lT0+nB5OBYQFyfJRd6fAv8vYkvrANjNBlg7L8m3MUwgl3Jt4xzPjbIlEwI4L9sKQ7P3nVUw55f9zjX8eIjgJSosr1uswJN1LiJjD11F</hostKey>
+          </configuration>
+        </server>
+      </servers>
+
 ## The problem
 
 Many people want to use the `SingleKnownHostsProvider` wagon provider to manually provide a host key when deploying with Maven to a remote SCP server specified in their `settings.xml`. This is to avoid relying on `$HOME/.ssh/known_hosts` and thus be independant from the user context.
@@ -67,8 +90,8 @@ In your `pom.xml`, use the following extension:
       <extensions>
         <extension>
           <groupId>org.apache.maven.wagon</groupId>
-            <artifactId>wagon-ssh</artifactId>
-            <version>3.0.1-SINGLE</version>
+          <artifactId>wagon-ssh</artifactId>
+          <version>3.0.1-SINGLE</version>
         </extension>
       </extensions>
     </build>
