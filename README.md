@@ -94,4 +94,4 @@ Now, in you configuration file `.m2/settings.xml`, just add a `<hostKey>...</hos
 The value of the `hostKey` parameter is built the following way:
 - first, write the remote host name, as defined in the server `url` parameter of the repository ;
 - add a space ;
-- write the content of the RSA key of your SSH server. This is often the content of the following file, in a standard installation of sshd : `/etc/ssh/ssh_host_rsa_key.pub`.
+- write the content of the RSA key of your SSH server. This is often the content of the following file, with a standard installation of sshd : `/etc/ssh/ssh_host_rsa_key.pub`.
