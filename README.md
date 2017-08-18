@@ -2,6 +2,8 @@
 
 Mirror of Apache Maven wagon, with extensions for in-line host key configuration in settings.xml
 
+## The problem
+
 Many people want to use the `SingleKnownHostsProvider` wagon provider to manually provide a host key when deploying with Maven to a remote SCP server specified in their `settings.xml`. This is to avoid relying on `$HOME/.ssh/known_hosts` and thus be independant from the user context.
 So, they often try to overload the `knownHostsProvider` implementation class the following way, to get a `SingleKnownHostProvider` instead of the default `FileKnownHostProvider`:
 
@@ -33,5 +35,7 @@ On the contrary, the class SingleKnownHostProvider is not defined with role `fil
     * @plexus.component role="org.apache.maven.wagon.providers.ssh.knownhost.KnownHostsProvider"
     *    role-hint="single"
 
-So, to solve this difficulty, this package introduces a patch to the AbstractJschWagon class, that adds a new `hostKey` configuration parameter in `settings.xml` and avoids using the `FileKnownHostProvider` when this parameter is defined. The host name and key set in the `hostKey` parameter are published as the unique host key entry used when invoking Jsch to connect to the remote server.
+## The solution
+
+To solve this difficulty, this package introduces a patch to the `AbstractJschWagon` class, that adds a new `hostKey` configuration parameter in `settings.xml` and avoids using the `FileKnownHostProvider` when this parameter is defined. The host name and key set in the `hostKey` parameter are published as the unique host key entry used when invoking Jsch to connect to the remote server.
 
