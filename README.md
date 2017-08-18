@@ -45,3 +45,27 @@ On the contrary, the class `SingleKnownHostProvider` is not defined with role `f
 
 To solve this difficulty, this package introduces a patch to the `AbstractJschWagon` class, that adds a new `hostKey` configuration parameter in `settings.xml` and avoids using the `FileKnownHostProvider` when this parameter is defined. The host name and key set in the `hostKey` parameter are published as the unique host key entry used when invoking Jsch to connect to the remote server.
 
+## Using this package
+
+To use this package, just do the following:
+
+    % git clone https://github.com/AlexandreFenyo/maven-wagon.git
+    % cd maven-wagon
+    % mvn install -DskipTests
+
+If you want to run unit testing, just remote `-DskipTests`. This may take a while.
+
+In your `pom.xml`, use the following extension:
+
+    <build>
+      <extensions>
+        <extension>
+          <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-ssh</artifactId>
+            <version>3.0.1-SINGLE</version>
+        </extension>
+      </extensions>
+    </build>
+
+
+
