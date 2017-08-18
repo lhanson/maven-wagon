@@ -57,7 +57,7 @@ To install this package, just do the following:
 
 Note 1: this will not override your Wagon installation, since this patched distribution is specifically renamed 3.0.1-SINGLE.
 
-Note 2: if you want to run unit testing, just remote `-DskipTests`. This may take a while.
+Note 2: if you want to run unit testing, just remove `-DskipTests`. This may take a while.
 
 ### secondly, declare this package inside your `pom.xml`
 
