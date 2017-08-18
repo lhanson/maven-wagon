@@ -47,7 +47,9 @@ To solve this difficulty, this package introduces a patch to the `AbstractJschWa
 
 ## Using this package
 
-To use this package, just do the following:
+### first, download the source tree and install it on your local host
+
+To install this package, just do the following:
 
     % git clone https://github.com/AlexandreFenyo/maven-wagon.git
     % cd maven-wagon
@@ -56,6 +58,8 @@ To use this package, just do the following:
 Note 1: this will not override your Wagon installation, since this patched distribution is specifically renamed 3.0.1-SINGLE.
 
 Note 2: if you want to run unit testing, just remote `-DskipTests`. This may take a while.
+
+### secondly, declare this package inside your `pom.xml`
 
 In your `pom.xml`, use the following extension:
 
@@ -77,6 +81,8 @@ In this example, we suppose that you have used the following server definition i
         <url>scp://my.remote.server.com/tmp/repo</url>
       </repository>
     </distributionManagement>
+
+### finally, configure the host key in your `settings.xml`
 
 Now, in you configuration file `.m2/settings.xml`, just add a `<hostKey>...</hostKey>` parameter if you want to avoid using the standard $HOME/.ssh/known_hosts file.
 
