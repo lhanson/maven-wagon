@@ -83,6 +83,9 @@ public abstract class AbstractJschWagon
 
     private String strictHostKeyChecking;
 
+    private String hostKey;
+
+    
     /**
      * @plexus.requirement role-hint="file"
      */
@@ -228,11 +231,35 @@ public abstract class AbstractJschWagon
         }
 
         Properties config = new Properties();
-        if ( getKnownHostsProvider() != null )
+
+        if ( getHostKey() == null )
+        {
+            if ( getKnownHostsProvider() != null )
+            {
+                try
+                {
+                    String contents = getKnownHostsProvider().getContents();
+                    if ( contents != null )
+                    {
+                        sch.setKnownHosts( new ByteArrayInputStream( contents.getBytes() ) );
+                    }
+                }
+                catch ( JSchException e )
+                {
+                    // continue without known_hosts
+                }
+                if ( strictHostKeyChecking == null )
+                {
+                    strictHostKeyChecking = getKnownHostsProvider().getHostKeyChecking();
+                }
+                config.setProperty( "StrictHostKeyChecking", strictHostKeyChecking );
+            }
+        }
+        else
         {
             try
             {
-                String contents = getKnownHostsProvider().getContents();
+                String contents = getHostKey();
                 if ( contents != null )
                 {
                     sch.setKnownHosts( new ByteArrayInputStream( contents.getBytes() ) );
@@ -242,11 +269,7 @@ public abstract class AbstractJschWagon
             {
                 // continue without known_hosts
             }
-            if ( strictHostKeyChecking == null )
-            {
-                strictHostKeyChecking = getKnownHostsProvider().getHostKeyChecking();
-            }
-            config.setProperty( "StrictHostKeyChecking", strictHostKeyChecking );
+            config.setProperty( "StrictHostKeyChecking", "yes" );
         }
 
         if ( authenticationInfo.getPassword() != null )
@@ -477,5 +500,15 @@ public abstract class AbstractJschWagon
     public void setStrictHostKeyChecking( String strictHostKeyChecking )
     {
         this.strictHostKeyChecking = strictHostKeyChecking;
+    }
+
+    public String getHostKey()
+    {
+        return hostKey;
+    }
+
+    public void setHostKey( String hostKey )
+    {
+        this.hostKey = hostKey;
     }
 }
