@@ -25,12 +25,12 @@ Because when the repository URL starts with `scp:`, Plexus, the component manage
      */
     private volatile KnownHostsProvider knownHostsProvider;
 
-Therefore, this `file` hint makes Plexus use the class `FileKnownHostsProvider` to instanciate the `knownHostsProvider` object. This is because this class is defined this way at the beginning of its source file:
+Therefore, this `file` hint makes Plexus use the class `FileKnownHostsProvider` to instanciate the `knownHostsProvider` object. This is because the class `FileKnownHostsProvider` is defined the following way at the beginning of its source file:
 
     * @plexus.component role="org.apache.maven.wagon.providers.ssh.knownhost.KnownHostsProvider"
     *    role-hint="file"
 
-On the contrary, the class SingleKnownHostProvider is not defined with role `file` but with role `single`:
+On the contrary, the class `SingleKnownHostProvider` is not defined with role `file` but with role `single`:
 
     * @plexus.component role="org.apache.maven.wagon.providers.ssh.knownhost.KnownHostsProvider"
     *    role-hint="single"
