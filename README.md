@@ -4,7 +4,9 @@ Patched version of Apache Maven wagon, supporting in-line host key configuration
 
 ## For the impatient
 
-1- use this **`3.0.1-SINGLE`** specific version of Wagon, instead of the standard one:
+1- download and install this package
+
+2- extend your pom with this **`3.0.1-SINGLE`** specific version of Maven wagon, instead of the standard one:
 
         <extension>
           <groupId>org.apache.maven.wagon</groupId>
@@ -12,7 +14,7 @@ Patched version of Apache Maven wagon, supporting in-line host key configuration
           <version>3.0.1-SINGLE</version>
         </extension>
 
-2- use the new `hostKey` parameter in your `.m2/settings.xml`:
+3- use the new `hostKey` parameter in your `.m2/settings.xml`:
 
     <servers>
       <server>
