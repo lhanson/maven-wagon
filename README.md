@@ -78,7 +78,7 @@ In this example, we suppose that you have used the following server definition i
       </repository>
     </distributionManagement>
 
-Now, in
+Now, in you configuration file `.m2/settings.xml`, just add a `<hostKey>...</hostKey>` parameter if you want to avoid using the standard $HOME/.ssh/known_hosts file.
 
     <servers>
       <server>
@@ -91,4 +91,7 @@ Now, in
         </server>
       </servers>
 
-xxx
+The value of the `hostKey` parameter is built the following way:
+- first, write the remote host name, as defined in the server `url` parameter of the repository ;
+- add a space ;
+- write the content of the RSA key of your SSH server. This is often the content of the following file, in a standard installation of sshd : `/etc/ssh/ssh_host_rsa_key.pub`.
