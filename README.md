@@ -72,7 +72,7 @@ To solve this difficulty, this package introduces a patch to the `AbstractJschWa
 
 ## Using this package
 
-### first, download the source tree and install it on your local host
+### first, download the source tree, compile and install it on your local host
 
 To install this package, just do the following:
 
