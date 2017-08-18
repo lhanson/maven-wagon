@@ -1,4 +1,4 @@
-# maven-wagon implementation with in-line host key in settings.xml
+# maven-wagon implementation with host key in settings.xml
 
 Patched version of Apache Maven wagon, supporting in-line host key configuration in `settings.xml`
 
