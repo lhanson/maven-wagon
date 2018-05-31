@@ -8,6 +8,10 @@ By Alexandre Fenyo - https://fenyo.net
 
 1- download and install this package
 
+    $ git clone https://github.com/AlexandreFenyo/maven-wagon
+    $ cd maven-wagon
+    $ mvn install -Drat.skip=true       # rat.skip avoids release audit failure
+
 2- extend your pom with this **`3.0.1-SINGLE`** specific version of Maven wagon, instead of the standard one:
 
         <extension>
